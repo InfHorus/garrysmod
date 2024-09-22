@@ -113,6 +113,9 @@ end
 function meta:CallOnRemove( name, func, ... )
 
 	local mytable = self:GetTable()
+	if ( !mytable ) then
+		return
+	end
 	mytable.OnDieFunctions = mytable.OnDieFunctions or {}
 
 	mytable.OnDieFunctions[ name ] = { Name = name, Function = func, Args = { ... } }
@@ -126,6 +129,9 @@ end
 function meta:RemoveCallOnRemove( name )
 
 	local mytable = self:GetTable()
+	if ( !mytable ) then
+		return
+	end
 	mytable.OnDieFunctions = mytable.OnDieFunctions or {}
 	mytable.OnDieFunctions[ name ] = nil
 
